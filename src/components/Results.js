@@ -44,14 +44,11 @@ class Results extends Component {
         // Handle navigation to this page without setting search criteria
         return (
             <div className='results'>
-                {/* <h3>{this.state.schools.length} schools in {usState} with {size} students</h3>
-                <Schools schoolList={this.state.schools}/> 
-                <button>Edit search</button>
-                <button>View saved</button> */}
                 {this.state.loading ? 
                     <AiOutlineLoading3Quarters className='loading'/> :
                     <div className='results-list'>
                         <h3>{heading}</h3>
+                        <Schools schoolList={this.state.schools}/>
                         <Link to='/saved' className='view-saved-btn' ><GoBookmark /></Link>
                         <Link to='/' className='edit-btn' ><FaEdit /></Link>
                     </div>

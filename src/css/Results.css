@@ -1,7 +1,5 @@
 .results {
     text-align: center;
-    color: #154874;
-    background-color: #FAE9CD;
     display: flex;
     flex-direction: column;
     height: 100vh;

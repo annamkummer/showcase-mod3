@@ -1,5 +1,6 @@
 const fetchData = (usState, size) => {
-    return fetch(`https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=${usState}&fields=id,school.name,school.school_url,latest.student.size,latest.student.demographics.men,latest.student.demographics.women&per_page=100&page=0&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn`)
+    let params = 'id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.6_yr_completion.male_students,latest.completion.6_yr_completion.female_students'
+    return fetch(`https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=${usState}&fields=${params}&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn`)
         .then(response => response.json())
         .then(data => {return filterBySize(data.results, size)})
         .catch(err => {return err})
@@ -26,6 +27,20 @@ const filterBySize = (schoolsByState, sizes) => {
 }
 
 export default fetchData
+
+/*
+&id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.6_yr_completion.male_students,latest.completion.6_yr_completion.female_students
+Need: 
+- id: ['id']
+- name: ['school.name']
+- state: 
+- enrollment: ['latest.student.size']
+- website-url: ['school.school_url']
+- %women enrolled: ['latest.student.demographics.women']
+- Overall grad rate: ['latest.completion.6_yr_completion.overall']
+- Grad rate men: ['latest.completion.6_yr_completion.male_students']
+- Grad rate women: ['latest.completion.6_yr_completion.female_students']
+*/
 
 // ***Working url:
 // 'https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=ND&fields=id,school.name&per_page=100&page=0&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn'
