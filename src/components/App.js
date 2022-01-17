@@ -9,18 +9,30 @@ class App extends Component {
     super()
     this.state = {
       usState: '',
-      size: '',
+      size: [],
       savedSchools: []
     }
+  }
+
+  setSearchCriteria(e, form) {
+    e.preventDefault()
+    let selectedSizes = []
+    form.small && selectedSizes.push('small')
+    form.medium && selectedSizes.push('medium')
+    form.large && selectedSizes.push('large')
+    this.setState({
+      usState: form.usState,
+      size: selectedSizes
+    })
   }
 
   render() {
     return (
       <div className="App">
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/results' element={<Results />}/>
-          <Route path='/saved' element={<Results />}/>
+          <Route path='/' element={<Home submit={(e, form) => this.setSearchCriteria(e, form)}/>}/>
+          <Route path='/results' element={<Results content='results' usState={this.state.usState} size={this.state.size} schools={[]}/>}/>
+          <Route path='/saved' element={<Results content='saved' usState='n/a' size='n/a' schools={this.state.savedSchools}/>}/>
         </Routes>
       </div>
     )
