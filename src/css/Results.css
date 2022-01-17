@@ -1,0 +1,29 @@
+.results {
+    text-align: center;
+    color: #154874;
+    background-color: #FAE9CD;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.edit-btn {
+    margin: 3%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 3em;
+    color: #154874;
+}
+
+.loading {
+    font-size: 2em;
+    animation: spin 1.5s linear infinite;
+    align-self: center;
+    position: fixed;
+    top: 40%;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg);}
+}

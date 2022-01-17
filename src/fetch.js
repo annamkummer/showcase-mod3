@@ -1,8 +1,8 @@
 const fetchData = (usState, size) => {
     return fetch(`https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=${usState}&fields=id,school.name,school.school_url,latest.student.size,latest.student.demographics.men,latest.student.demographics.women&per_page=100&page=0&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn`)
         .then(response => response.json())
-        .then(data => console.log(filterBySize(data.results, size)))
-        .catch(err => console.log(err))
+        .then(data => {return filterBySize(data.results, size)})
+        .catch(err => {return err})
 }
 
 const filterBySize = (schoolsByState, sizes) => {
@@ -11,11 +11,9 @@ const filterBySize = (schoolsByState, sizes) => {
     let smallSchools = schoolsByState.filter(school => {
         return school['latest.student.size'] < 10000
     })
-    
     let mediumSchools = schoolsByState.filter(school => {
         return school['latest.student.size'] >= 10000 && school['latest.student.size'] <= 20000
     })
-
     let largeSchools = schoolsByState.filter(school => {
         return school['latest.student.size'] > 20000
     })
