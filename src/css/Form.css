@@ -1,0 +1,47 @@
+/* 
+#FAE9CD
+#154874
+#D6ADBE
+#67C9E2 
+#EC8556
+*/
+
+.form {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.states {
+    border: none;
+    border-radius: 5px;
+    padding: 1%;
+    font-size: 150%;
+    color: white;
+    background-color: #154874;
+}
+
+.size {
+    margin: 1%;
+    border: 2px solid #154874;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+h3 {
+    margin: 0;
+}
+
+.submit-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 2%;
+    width: 50%;
+    font-size: 100%;
+    font-weight: bold;
+    color: white;
+    background-color: #EC8556;
+    text-decoration: none;
+}

@@ -1,0 +1,18 @@
+/* 
+#FAE9CD
+#154874
+#D6ADBE
+#67C9E2 
+#EC8556
+*/
+
+.school {
+    border: 3px solid #EC8556;
+    border-radius: 5px;
+    margin: 2%;
+    padding: 1%;
+    color: #154874;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

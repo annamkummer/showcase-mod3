@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom'
+import { GoBookmark } from 'react-icons/go'
 import Form from './Form'
 import '../css/Home.css';
 
-const Home = () => {
+const Home = ({ submit }) => {
     return (
-        <div className='Home'>
-            <h1>Showcase</h1>
-            <Form />
-            <button>View saved</button>
+        <div className='home'>
+            <h1 className='title'>Showcase</h1>
+            <Form submit={submit}/>
+            <Link to='/saved' className='view-saved-btn' ><GoBookmark /></Link>
         </div>
     )
 }
