@@ -34,13 +34,21 @@ class Results extends Component {
     
     async getData () {
         let schools = await fetchData(this.props.usState, this.props.size)
-        let localBookmarkedSchools = this.getBookmarks()
-        let bookmarkAddedSchools = this.addBookmarks(schools, localBookmarkedSchools)
-
-        this.setState({
-            bookmarkedSchools: localBookmarkedSchools,
-            schools: bookmarkAddedSchools, 
-            loading: false})
+            .catch(err => 'error?')
+        if (schools.statusText) {
+            this.setState({
+                error: schools,
+                loading: false
+            })
+        } else {
+            let localBookmarkedSchools = this.getBookmarks()
+            let bookmarkAddedSchools = this.addBookmarks(schools, localBookmarkedSchools)
+    
+            this.setState({
+                bookmarkedSchools: localBookmarkedSchools,
+                schools: bookmarkAddedSchools, 
+                loading: false})
+        }
     }
 
     getHeading() {
@@ -85,12 +93,13 @@ class Results extends Component {
             <div className='results'>
                 {this.state.loading ? 
                     <AiOutlineLoading3Quarters className='loading'/> :
-                    <div className='results-list'>
-                        <h3>{heading}</h3>
-                        <Schools schoolList={this.state.schools} changeBookmark={(id) => this.toggleBookmark(id)}/>
-                        <Link to='/saved' className='view-saved-btn' ><GoBookmark /></Link>
-                        <Link to='/' className='edit-btn' ><FaEdit /></Link>
-                    </div>
+                    this.state.error ? <h3 className='heading'>There was an issue. Please check your internet connection and try again!</h3> :
+                        <div className='results-list'>
+                            <h3 className='heading'>{heading}</h3>
+                            <Schools schoolList={this.state.schools} changeBookmark={(id) => this.toggleBookmark(id)}/>
+                            <Link to='/saved' className='view-saved-btn' ><GoBookmark /></Link>
+                            <Link to='/' className='edit-btn' ><FaEdit /></Link>
+                        </div>
                 }
                 
             </div>

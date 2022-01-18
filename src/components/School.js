@@ -12,8 +12,8 @@ const School = ({ id, name, enrolled, website, womenEnrolledPercent, menGradRate
             <header className='school-header'>
                 <h4 className='school-name' >{name}</h4>
                 {isBookmarked ? 
-                    <BsBookmarkFill className='bookmark' onClick={() => changeBookmark(id)} /> :
-                    <BsBookmark className='bookmark' onClick={() => changeBookmark(id)} />
+                    <BsBookmarkFill className='bookmark fill' onClick={() => changeBookmark(id)} /> :
+                    <BsBookmark className='bookmark open' onClick={() => changeBookmark(id)} />
                 }
             </header>
             <a href={website} rel='noreferrer' target='_blank' className='detail url'><FaExternalLinkAlt /></a>

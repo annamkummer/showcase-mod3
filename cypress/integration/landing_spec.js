@@ -1,11 +1,10 @@
-describe('Search page user flow', () => {
+describe('Landing / search page user flow', () => {
     
     beforeEach(() => {
         cy.visit('localhost:3000')
     })
     
     it('When the user visits the home page, the title of the site should be displayed in the header.', () => {
-        cy.visit('localhost:3000')
         cy.get('.title').contains('University Search')
     })
     
