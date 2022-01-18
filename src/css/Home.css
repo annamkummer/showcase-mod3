@@ -16,3 +16,11 @@
     font-size: 3em;
     color: #154874;
 }
+
+@media (min-width: 821px) {
+    .title {
+        margin-top: 10%;
+    }
+}
+
+/* width: 820 */

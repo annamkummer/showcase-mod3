@@ -1,14 +1,28 @@
 const fetchData = (usState, size) => {
-    let params = 'id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.title_iv.male.completed_by.6yrs,latest.completion.title_iv.female.completed_by.6yrs'
+    let params = 'id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.title_iv.male.completed_by.6yrs,latest.completion.title_iv.female.completed_by.6yrs,school.degrees_awarded.highest'
     return fetch(`https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=${usState}&fields=${params}&per_page=100&page=0&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn`)
-        .then(response => response.json())
-        .then(data => {return filterBySize(data.results, size)})
+        .then(response => {
+            if (!response.ok) {
+                throw response
+            }
+            return response.json()
+        })
+        .then(data => {return filterData(data.results, size)})
         .catch(err => {return err})
 }
 
-const filterBySize = (schoolsByState, sizes) => {
-    let filteredSchools = []
+const filterData = (initialData, sizes) => {
+    let fourYearSchools = filterByDegrees(initialData)
+    return filterBySize(fourYearSchools, sizes)
+}
 
+const filterByDegrees = (schools) => {
+    return schools.filter(school => school['school.degrees_awarded.highest'] > 2)
+}
+
+const filterBySize = (schoolsByState, sizes) => {
+    let filteredSchools = (!sizes.length) ? schoolsByState : []
+    
     let smallSchools = schoolsByState.filter(school => {
         return school['latest.student.size'] < 10000
     })

@@ -45,3 +45,9 @@ h3 {
     background-color: #EC8556;
     text-decoration: none;
 }
+
+@media (min-width: 821px) {
+    .submit-btn {
+        width: 25%;
+    }
+}

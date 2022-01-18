@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Error from './Error'
 import Home from './Home'
 import Results from './Results'
 import '../css/App.css';
@@ -10,7 +11,6 @@ class App extends Component {
     this.state = {
       usState: '',
       size: [],
-      savedSchools: []
     }
   }
 
@@ -31,8 +31,9 @@ class App extends Component {
       <div className="App">
         <Routes>
           <Route path='/' element={<Home submit={(e, form) => this.setSearchCriteria(e, form)}/>}/>
-          <Route path='/results' element={<Results content='results' usState={this.state.usState} size={this.state.size} schools={[]}/>}/>
+          <Route path='/results' element={<Results content='results' usState={this.state.usState} size={this.state.size} />}/>
           <Route path='/saved' element={<Results content='saved' usState='n/a' size='n/a' schools={this.state.savedSchools}/>}/>
+          <Route path='/*' element={<Error />} />
         </Routes>
       </div>
     )
