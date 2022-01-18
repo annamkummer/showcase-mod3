@@ -5,14 +5,16 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 import '../css/School.css'
 
 
-const School = ({ name, enrolled, website, womenEnrolledPercent, menGradRate, womenGradRate }) => {
+const School = ({ id, name, enrolled, website, womenEnrolledPercent, menGradRate, womenGradRate, changeBookmark, isBookmarked }) => {
 
     return (
         <div className='school'>
             <header className='school-header'>
                 <h4 className='school-name' >{name}</h4>
-                {/* <BsBookmarkFill className='bookmark' /> */}
-                <BsBookmark className='bookmark' />
+                {isBookmarked ? 
+                    <BsBookmarkFill className='bookmark' onClick={() => changeBookmark(id)} /> :
+                    <BsBookmark className='bookmark' onClick={() => changeBookmark(id)} />
+                }
             </header>
             <a href={website} rel='noreferrer' target='_blank' className='detail url'><FaExternalLinkAlt /></a>
             <p className='detail enrollment' >Total enrollment: {enrolled}</p>

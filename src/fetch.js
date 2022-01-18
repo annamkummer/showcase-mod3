@@ -1,9 +1,27 @@
-const fetchData = (usState, size) => {
-    let params = 'id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.title_iv.male.completed_by.6yrs,latest.completion.title_iv.female.completed_by.6yrs'
+const fetchData = (usState, size, bookmarks) => {
+    let params = 'id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.title_iv.male.completed_by.6yrs,latest.completion.title_iv.female.completed_by.6yrs,school.degrees_awarded.highest'
     return fetch(`https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=${usState}&fields=${params}&per_page=100&page=0&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn`)
         .then(response => response.json())
-        .then(data => {return filterBySize(data.results, size)})
+        .then(data => {return filterData(data.results, size, bookmarks)})
         .catch(err => {return err})
+}
+
+const filterData = (initialData, sizes, bookmarks) => {
+    let fourYearSchools = filterByDegrees(initialData)
+    let selectedSizeSchools = filterBySize(fourYearSchools, sizes)
+    return addBookmarks(selectedSizeSchools, bookmarks)
+}
+
+const filterByDegrees = (schools) => {
+    return schools.filter(school => school['school.degrees_awarded.highest'] > 2)
+}
+
+const addBookmarks = (schools, bookmarks) => {
+    let bookmarkIds = bookmarks.map(bookmark => bookmark.id)
+    return schools.map(school => {
+        school['isBookmarked'] = bookmarkIds.includes(school['id'])
+        return school
+    })
 }
 
 const filterBySize = (schoolsByState, sizes) => {
