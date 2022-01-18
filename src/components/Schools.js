@@ -2,7 +2,6 @@ import School from './School'
 import '../css/Schools.css'
 
 const Schools = ({ schoolList }) => {
-    console.log(schoolList)
     let schools = (!schoolList.length) ? 
         'There are no schools that match that search. Please try again!' : 
         schoolList.map(school => {
@@ -12,8 +11,8 @@ const Schools = ({ schoolList }) => {
                 enrolled={school['latest.student.size']}
                 website={school['school.school_url']}
                 womenEnrolledPercent={school['latest.student.demographics.women']}
-                menGradRate={school['latest.completion.male.completed_by_6yrs']}
-                womenGradRate={school['latest.completion.male.completed_by_6yrs']}
+                menGradRate={school['latest.completion.title_iv.male.completed_by.6yrs']}
+                womenGradRate={school['latest.completion.title_iv.female.completed_by.6yrs']}
             />
         })
 

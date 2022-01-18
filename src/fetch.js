@@ -1,6 +1,6 @@
 const fetchData = (usState, size) => {
-    let params = 'id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.6_yr_completion.male_students,latest.completion.6_yr_completion.female_students'
-    return fetch(`https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=${usState}&fields=${params}&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn`)
+    let params = 'id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.title_iv.male.completed_by.6yrs,latest.completion.title_iv.female.completed_by.6yrs'
+    return fetch(`https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state=${usState}&fields=${params}&per_page=100&page=0&api_key=AXpPzlNYnYWUogjB0Pr2hI7tbcHW3E1TLNYLazbn`)
         .then(response => response.json())
         .then(data => {return filterBySize(data.results, size)})
         .catch(err => {return err})
@@ -29,7 +29,7 @@ const filterBySize = (schoolsByState, sizes) => {
 export default fetchData
 
 /*
-&id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.6_yr_completion.male_students,latest.completion.6_yr_completion.female_students
+&id,school.name,latest.student.size,school.school_url,latest.student.demographics.women,latest.completion.6_yr_completion.overall,latest.completion.6_yr_completion.male_students,latest.completion.title_iv.female.completed_by.6yrs
 Need: 
 - id: ['id']
 - name: ['school.name']
@@ -38,8 +38,8 @@ Need:
 - website-url: ['school.school_url']
 - %women enrolled: ['latest.student.demographics.women']
 - Overall grad rate: ['latest.completion.6_yr_completion.overall']
-- Grad rate men: ['latest.completion.6_yr_completion.male_students']
-- Grad rate women: ['latest.completion.6_yr_completion.female_students']
+- Grad rate men: ['latest.completion.title_iv.male.completed_by.6yrs']
+- Grad rate women: ['latest.completion.title_iv.female.completed_by.6yrs']
 */
 
 // ***Working url:
