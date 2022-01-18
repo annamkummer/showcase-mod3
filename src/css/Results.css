@@ -2,7 +2,8 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    background-color: #FAE9CD;
+    min-height: 100vh;
 }
 
 .edit-btn {
