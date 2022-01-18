@@ -7,7 +7,6 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { FaEdit } from 'react-icons/fa'
 import { GoBookmark } from 'react-icons/go'
 
-
 class Results extends Component {
     constructor(props) {
         super(props)
@@ -67,7 +66,15 @@ class Results extends Component {
     }
 
     componentDidMount() {
-        this.getData()
+        this.props.content === 'results' && this.getData()
+        if (this.props.content === 'saved') {
+            let localBookmarkedSchools = this.getBookmarks()
+            this.setState({
+                schools: localBookmarkedSchools,
+                bookmarkedSchools: localBookmarkedSchools,
+                loading: false
+            })
+        } 
     }
     
     render() {
