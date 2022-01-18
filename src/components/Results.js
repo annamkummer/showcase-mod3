@@ -18,18 +18,30 @@ class Results extends Component {
         }
     }
 
-    async getData () {
-        let schools = await fetchData(this.props.usState, this.props.size, this.state.bookmarkedSchools)
-        this.setState({schools: schools, loading: false})
+    getBookmarks() {
+        let ids = Object.keys(localStorage)
+        return ids.map(id => {
+            return JSON.parse(localStorage.getItem(id))
+        })
     }
 
-    getBookmarks() {
-        let bookmarkedSchools = []
-        let ids = Object.keys(localStorage)
-        ids.forEach(id => {
-            bookmarkedSchools.push(JSON.parse(localStorage.getItem(id)))
+    addBookmarks = (schools, bookmarks) => {
+        let bookmarkIds = bookmarks.map(bookmark => bookmark.id)
+        return schools.map(school => {
+            school['isBookmarked'] = bookmarkIds.includes(school['id'])
+            return school
         })
-        this.setState({bookmarkedSchools})
+    }
+    
+    async getData () {
+        let schools = await fetchData(this.props.usState, this.props.size)
+        let localBookmarkedSchools = this.getBookmarks()
+        let bookmarkAddedSchools = this.addBookmarks(schools, localBookmarkedSchools)
+
+        this.setState({
+            bookmarkedSchools: localBookmarkedSchools,
+            schools: bookmarkAddedSchools, 
+            loading: false})
     }
 
     getHeading() {
@@ -44,30 +56,23 @@ class Results extends Component {
     }
 
     toggleBookmark(id) {
-        let index;
         let bookmarkedSchool = this.state.schools.find((school, i) => {
-            index = i
             return school.id === id})
+        bookmarkedSchool.isBookmarked = !bookmarkedSchool.isBookmarked
         localStorage.getItem(`${id}`) ? 
             localStorage.removeItem(`${id}`) : 
             localStorage.setItem(`${id}`, JSON.stringify(bookmarkedSchool))
-
-        let schools = this.state.schools
-        schools[index].isBookmarked = !schools[index].isBookmarked
-        
-        this.setState({schools})
+        let updatedSchools = this.state.schools
+        this.setState({schools: updatedSchools})
     }
 
     componentDidMount() {
-        this.getBookmarks()
-        console.log(this.state.bookMarkedSchools)
         this.getData()
     }
-
+    
     render() {
         const { content, usState, size } = this.props
         let heading = this.getHeading()
-        console.log('rendering')
         // Handle navigation to this page without setting search criteria
         return (
             <div className='results'>
@@ -87,3 +92,15 @@ class Results extends Component {
 }
 
 export default Results
+
+/*
+
+1 - Pull bookmarked schools from localStorage (should start with none)
+2 - Fetch schools and set isBookmarked status on each 
+3 - When bookmark icon is clicked, 
+-- a) toggle isBookmarked status
+-- b) add or remove from local storage based on whether or not it's already there
+-- c) re-render so that opposite bookmark icon shows
+4 - When SavedSchools icon is clicked, display only and all bookmarked schools
+
+*/
