@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import fetchData from '../fetch'
 import Schools from './Schools'
@@ -109,14 +110,14 @@ class Results extends Component {
 
 export default Results
 
-/*
+Results.propTypes = {
+    content: PropTypes.string,
+    usState: PropTypes.string,
+    size: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array
+    ])
+}
 
-1 - Pull bookmarked schools from localStorage (should start with none)
-2 - Fetch schools and set isBookmarked status on each 
-3 - When bookmark icon is clicked, 
--- a) toggle isBookmarked status
--- b) add or remove from local storage based on whether or not it's already there
--- c) re-render so that opposite bookmark icon shows
-4 - When SavedSchools icon is clicked, display only and all bookmarked schools
 
-*/
+
