@@ -3,17 +3,6 @@ Find your school<br>
 
 ![UniversitySearch](https://user-images.githubusercontent.com/75143561/150051413-a6813cbc-16cc-4211-a71b-660d3345a341.gif)
 
-## Table of Contents
-  - [Visit the App!](#visit-the-app!)
-  - [Abstract](#abstract)
-  - [Code Architecture](#code-architecture-/technologies)
-  - [Illustrations](#illustrations)
-  - [Local Install + Setup](#local-install-+-setup)
-  - [Contributors](#contributors)
-  - [Wins](#wins)
-  - [Challenges + Improvements](#challenges-+-Improvements)
-  - [Project Specs](#project-specs)
-
 ## Visit the App!
   - Visit the deployed app [here](https://university-search-amk.surge.sh/)!
 
