@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# University Search
+Find your school<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="1432" alt="Bingo-still" src="https://user-images.githubusercontent.com/75143561/149198550-fb69ce58-c7e4-401b-ae50-a031e499b141.png">
 
-## Available Scripts
+## Table of Contents
+  - [Visit the App!](#visit-the-app!)
+  - [Abstract](#abstract)
+  - [Code Architecture](#code-architecture-/technologies)
+  - [Illustrations](#illustrations)
+  - [Local Install + Setup](#local-install-+-setup)
+  - [Contributors](#contributors)
+  - [Wins](#wins)
+  - [Challenges + Improvements](#challenges-+-Improvements)
+  - [Project Specs](#project-specs)
 
-In the project directory, you can run:
+## Visit the App!
+  - Visit the deployed app [here](https://university-search-amk.surge.sh/)!
 
-### `npm start`
+## Abstract
+  - This application uses data.gov's College Scorecard API to allow prospective students to find Universities by state and enrollment size. 
+  - After entering the search parameters, students can view a few stats about the school and link to the University's homepage.
+  - Students can bookmark schools they're interested in. Saved schools persist on reload via localStorage.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Code Architecture / Technologies
+  - Javascript / CSS / HTML
+  - React
+  - Router
+  - Cypress
+  - Surge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Illustrations
 
-### `npm test`
+https://user-images.githubusercontent.com/75143561/149198193-a874deeb-517f-40d6-88f3-855aba3b45e6.mp4
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Install + Setup
+  - If you'd like to run this repo locally, clone it down to your machine:
+  - `git clone git@github.com:annamkummer/showcase-mod3.git`
+  - `cd showcase-mod3`
+  - Then, install the necessary dependencies:
+  - `npm install`
 
-### `npm run build`
+## Contributors
+  - [Anna Kummer](https://github.com/annamkummer)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Wins
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - Allowing users to bookmark via localStorage
+  - Testing 500 errors without controlling the API using stubbing in Cypress
+  - Deploying with Surge
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Challenges + Improvements
 
-### `npm run eject`
+  - College Scorecard has tons of data that would be interesting to prospective students. While this application focused on just a few stats that weren't available on other college search platforms, a potential enhancement would be to tailor datapoints to specific user types. For example, some students might be more interested in student loan debt data or number of Engineering degrees awarded...
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Specs
+  - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-3/showcase.html).
