@@ -1,6 +1,5 @@
 import { makePercent } from '../utils.js'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import '../css/School.css'

@@ -60,7 +60,9 @@ class Results extends Component {
         let sizeOfSchools = (schoolSizes.length === 1) ? schoolSizes[0] 
             : (schoolSizes.length === 2) ? `${schoolSizes[0]} and ${schoolSizes[1]}`
             : ''
-        return `${numberOfSchools} ${sizeOfSchools} school${s} in ${this.props.usState}`
+
+        let message = (this.props.content === 'saved') ? `${numberOfSchools} saved school(s)` : `${numberOfSchools} ${sizeOfSchools} school${s} in ${this.props.usState}`
+        return message
     }
 
     toggleBookmark(id) {
@@ -74,20 +76,21 @@ class Results extends Component {
         this.setState({schools: updatedSchools})
     }
 
+    navToSaved() {
+        let localBookmarkedSchools = this.getBookmarks()
+        this.setState({
+            schools: localBookmarkedSchools,
+            bookmarkedSchools: localBookmarkedSchools,
+            loading: false
+        })
+    }
+
     componentDidMount() {
         this.props.content === 'results' && this.getData()
-        if (this.props.content === 'saved') {
-            let localBookmarkedSchools = this.getBookmarks()
-            this.setState({
-                schools: localBookmarkedSchools,
-                bookmarkedSchools: localBookmarkedSchools,
-                loading: false
-            })
-        } 
+        this.props.content === 'saved' && this.navToSaved()
     }
     
     render() {
-        const { content, usState, size } = this.props
         let heading = this.getHeading()
         // Handle navigation to this page without setting search criteria
         return (
@@ -98,7 +101,7 @@ class Results extends Component {
                         <div className='results-list'>
                             <h3 className='heading'>{heading}</h3>
                             <Schools schoolList={this.state.schools} changeBookmark={(id) => this.toggleBookmark(id)}/>
-                            <Link to='/saved' className='view-saved-btn' ><GoBookmark /></Link>
+                            <Link to='/saved' className='view-saved-btn' ><GoBookmark onClick={() => this.navToSaved()}/></Link>
                             <Link to='/' className='edit-btn' ><FaEdit /></Link>
                         </div>
                 }
