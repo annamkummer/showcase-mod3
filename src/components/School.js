@@ -1,4 +1,5 @@
 import { makePercent } from '../utils.js'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs'
 import { FaExternalLinkAlt } from 'react-icons/fa'
@@ -26,4 +27,22 @@ const School = ({ id, name, enrolled, website, womenEnrolledPercent, menGradRate
 }
 
 export default School
+
+School.propTypes = {
+    id: PropTypes.number,
+    name: PropTypes.string,
+    enrolled: PropTypes.number,
+    website: PropTypes.string,
+    womenEnrolledPercent: PropTypes.number,
+    menGradRate: PropTypes.number,
+    usSwomenGradRatetate: PropTypes.number,
+    changeBookmark: PropTypes.func,
+    isBookmarked: PropTypes.bool
+}
+
+
+
+
+
+
 

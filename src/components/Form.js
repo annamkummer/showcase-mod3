@@ -1,4 +1,5 @@
 import { stateAbbrevs } from '../stateAbbrevs.js'
+import PropTypes from 'prop-types'
 import { Component } from 'react'
 import SelectSearch from 'react-select-search';
 import { Link } from 'react-router-dom'
@@ -45,7 +46,6 @@ class Form extends Component {
                         Large
                     </label>
                 </div>
-                {/* <input className='submit-btn' type="submit" value="View Schools" onClick={(event, form) => submit(event, this.state)}/> */}
                 <button className='submit-btn' onClick={(event, form) => submit(event, this.state)}>
                     <Link to='/results' className='submit-link' >View Schools</Link>
                 </button>
@@ -55,3 +55,8 @@ class Form extends Component {
 }
 
 export default Form
+
+Form.propTypes = {
+    submit: PropTypes.func
+}
+

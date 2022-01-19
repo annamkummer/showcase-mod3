@@ -1,4 +1,5 @@
 import School from './School'
+import PropTypes from 'prop-types'
 import '../css/Schools.css'
 
 const Schools = ({ schoolList, changeBookmark }) => {
@@ -27,3 +28,9 @@ const Schools = ({ schoolList, changeBookmark }) => {
 }
 
 export default Schools
+
+Schools.propTypes = {
+    schoolList: PropTypes.array
+}
+
+
