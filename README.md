@@ -1,7 +1,7 @@
 # University Search
 Find your school<br>
 
-<img width="1432" alt="Bingo-still" src="https://user-images.githubusercontent.com/75143561/149198550-fb69ce58-c7e4-401b-ae50-a031e499b141.png">
+![UniversitySearch](https://user-images.githubusercontent.com/75143561/150051413-a6813cbc-16cc-4211-a71b-660d3345a341.gif)
 
 ## Table of Contents
   - [Visit the App!](#visit-the-app!)
@@ -29,10 +29,6 @@ Find your school<br>
   - Cypress
   - Surge
 
-## Illustrations
-
-https://user-images.githubusercontent.com/75143561/149198193-a874deeb-517f-40d6-88f3-855aba3b45e6.mp4
-
 ## Install + Setup
   - If you'd like to run this repo locally, clone it down to your machine:
   - `git clone git@github.com:annamkummer/showcase-mod3.git`
@@ -55,3 +51,4 @@ https://user-images.githubusercontent.com/75143561/149198193-a874deeb-517f-40d6-
 
 ## Project Specs
   - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-3/showcase.html).
+
